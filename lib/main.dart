@@ -1,54 +1,87 @@
 import 'package:flutter/material.dart';
-import 'package:anime_client/widgets/topbar.dart';
+import 'package:go_router/go_router.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 
-void main() => runApp(const AnimeApp());
+import 'package:anime_client/pages/index.dart';
+import 'package:anime_client/pages/characters.dart';
+import 'package:anime_client/pages/animes.dart';
+import 'package:anime_client/pages/home.dart';
 
-class AnimeApp extends StatelessWidget {
-  const AnimeApp({super.key});
+import 'package:anime_client/widgets/bottomnavigation.dart';
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      //theme: themeData,
-      home: Anime()
-      );
-  }
+Future<void> main() async {
+  usePathUrlStrategy();
+  runApp(
+    Anime(),
+  );
 }
 
-class Anime extends StatefulWidget {
-  const Anime({super.key});
+class Anime extends StatelessWidget {
+  Anime({super.key});
 
-  @override
-  State<Anime> createState() => _AnimeState();
-}
-
-class _AnimeState extends State<Anime> {
-  int currentPageIndex = 0;
-  //bool isDark = false;
-  NavigationDestinationLabelBehavior labelBehavior =
-      NavigationDestinationLabelBehavior.onlyShowSelected;
-
-  @override
-  Widget build(BuildContext context) {
-    /*final ThemeData themeData = ThemeData(
-        useMaterial3: true,
-        brightness: isDark ? Brightness.dark : Brightness.light);*/
-        
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(80.0),
-        child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: <Color>[Colors.blue, Colors.pink],
-            ),
+  final GoRouter _router = GoRouter(
+    initialLocation: '/',
+    routes: <RouteBase>[
+      StatefulShellRoute.indexedStack(
+        builder: (BuildContext context, GoRouterState state,
+            StatefulNavigationShell navigationShell) {
+          return ScaffoldBottomNavigationBar(
+            navigationShell: navigationShell,
+          );
+        },
+        branches: <StatefulShellBranch>[
+          StatefulShellBranch(
+            routes: <RouteBase>[
+              GoRoute(
+                path: '/',
+                builder: (BuildContext context, GoRouterState state) {
+                  return const IndexPage();
+                },
+              ),
+            ],
           ),
-          child: const TopBar(),
-        ),
+          StatefulShellBranch(
+            routes: <RouteBase>[
+              GoRoute(
+                path: '/animes',
+                builder: (BuildContext context, GoRouterState state) {
+                  return const AnimesPage();
+                },
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: <RouteBase>[
+              GoRoute(
+                path: '/characters',
+                builder: (BuildContext context, GoRouterState state) {
+                  return const CharactersPage();
+                },
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: <RouteBase>[
+              GoRoute(
+                path: '/home',
+                builder: (BuildContext context, GoRouterState state) {
+                  return const HomePage();
+                },
+              ),
+            ],
+          ),
+        ],
       ),
-      body: const Center(
-        child: Text('Content'),
-      ),
+    ],
+    
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
+      title: 'Anime',
+      theme: ThemeData(useMaterial3: true),
+      routerConfig: _router,
     );
   }
 }

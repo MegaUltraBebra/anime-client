@@ -1,13 +1,9 @@
 import 'package:anime_client/widgets/appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
-
-class IndexPage extends StatelessWidget {
-
-  static const String route = '/';
-  
-  const IndexPage({super.key});
+class HomePage extends StatelessWidget {
+  static const String route = '/home';
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +11,10 @@ class IndexPage extends StatelessWidget {
       appBar: CustomAppbar(context: context),
       body: Center(
         child: ElevatedButton(
-          child: const Text('index route'),
           onPressed: () {
-            context.go('/catalog');
+            // Navigate back to first route when tapped.
           },
+          child: const Text('Go back!'),
         ),
       ),
     );
