@@ -11,6 +11,9 @@ import 'package:anime_client/pages/search.dart';
 
 import 'package:anime_client/widgets/bottomnavigation.dart';
 
+import 'package:anime_client/themes/colors.dart';
+import 'package:material_text_fields/theme/material_text_field_theme.dart';
+
 Future<void> main() async {
   usePathUrlStrategy();
   runApp(Anime());
@@ -79,9 +82,7 @@ class Anime extends StatelessWidget {
             routes: <RouteBase>[
               GoRoute(
                 path: '/home',
-                builder: (BuildContext context, GoRouterState state) {
-                  return const HomePage();
-                },
+                builder: (context, state) => const HomePage()
               ),
             ],
           ),
@@ -97,7 +98,7 @@ class Anime extends StatelessWidget {
       title: 'Anime',
       theme: ThemeData.dark().copyWith(
           appBarTheme: const AppBarTheme(
-            backgroundColor: Color.fromARGB(255, 254, 144, 0),
+            backgroundColor: AppColors.primary,
             actionsIconTheme: IconThemeData(),
             centerTitle: true,
             titleTextStyle: TextStyle(
@@ -106,9 +107,24 @@ class Anime extends StatelessWidget {
             )
           ),
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-            selectedItemColor: Color.fromARGB(255, 254, 144, 0),
-            unselectedItemColor: Color.fromARGB(255, 254, 144, 0),
+            selectedItemColor: AppColors.primary,
+            unselectedItemColor: AppColors.primary,
           ),
+          inputDecorationTheme: FilledOrOutlinedTextTheme(
+            radius: 8,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+            errorStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+            fillColor: Colors.transparent,
+            prefixIconColor: Colors.green,
+            enabledColor: Colors.grey,
+            focusedColor: Colors.green,
+            floatingLabelStyle: const TextStyle(color: Colors.green),
+            width: 1.5,
+            labelStyle: const TextStyle(fontSize: 16, color: AppColors.textcolor),
+          ),
+          elevatedButtonTheme: const ElevatedButtonThemeData(
+            
+          )
       ),
       routerConfig: _router,
     );

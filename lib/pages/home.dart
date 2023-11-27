@@ -1,23 +1,17 @@
+import 'package:anime_client/pages/signup.dart';
 import 'package:anime_client/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  static const String route = '/home';
+class HomePage extends StatelessWidget{
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: CustomAppbar(context: context),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // Navigate back to first route when tapped.
-          },
-          child: const Text('Go back!'),
-        ),
-      ),
+      body: const SignupState(),
     );
   }
 }
