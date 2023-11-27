@@ -8,6 +8,8 @@ import 'package:anime_client/pages/animes.dart';
 import 'package:anime_client/pages/home.dart';
 import 'package:anime_client/pages/notifications.dart';
 import 'package:anime_client/pages/search.dart';
+import 'package:anime_client/pages/signin.dart';
+import 'package:anime_client/pages/signup.dart';
 
 import 'package:anime_client/widgets/bottomnavigation.dart';
 
@@ -28,16 +30,21 @@ class Anime extends StatelessWidget {
 
       GoRoute(
         path: '/notifications',
-        builder: (BuildContext context, GoRouterState state) {
-          return NotificationsPage();
-        },
+        builder: (context, state) => const NotificationsState()
       ),
 
       GoRoute(
         path: '/search',
-        builder: (BuildContext context, GoRouterState state) {
-          return const SearchMenu();
-        },
+        builder: (context, state) => const SearchMenu()
+      ),
+      GoRoute(
+        path: '/signup',
+        builder: (context, state) => const SignupState()
+      ),
+
+      GoRoute(
+        path: '/signin',
+        builder: (context, state) => const SigninState()
       ),
 
       StatefulShellRoute.indexedStack(
@@ -52,9 +59,7 @@ class Anime extends StatelessWidget {
             routes: <RouteBase>[
               GoRoute(
                 path: '/',
-                builder: (BuildContext context, GoRouterState state) {
-                  return const IndexPage();
-                },
+                builder: (context, state) => const IndexPage()
               ),
             ],
           ),
@@ -62,9 +67,7 @@ class Anime extends StatelessWidget {
             routes: <RouteBase>[
               GoRoute(
                 path: '/animes',
-                builder: (BuildContext context, GoRouterState state) {
-                  return const AnimesPage();
-                },
+                builder: (context, state) => const AnimesPage()
               ),
             ],
           ),
@@ -72,9 +75,7 @@ class Anime extends StatelessWidget {
             routes: <RouteBase>[
               GoRoute(
                 path: '/characters',
-                builder: (BuildContext context, GoRouterState state) {
-                  return const CharactersPage();
-                },
+                builder: (context, state) => const CharactersPage()
               ),
             ],
           ),
@@ -122,9 +123,6 @@ class Anime extends StatelessWidget {
             width: 1.5,
             labelStyle: const TextStyle(fontSize: 16, color: AppColors.textcolor),
           ),
-          elevatedButtonTheme: const ElevatedButtonThemeData(
-            
-          )
       ),
       routerConfig: _router,
     );

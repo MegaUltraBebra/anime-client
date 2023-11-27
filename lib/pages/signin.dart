@@ -4,18 +4,17 @@ import 'package:go_router/go_router.dart';
 import 'package:material_text_fields/material_text_fields.dart';
 import 'package:material_text_fields/utils/form_validation.dart';
 
-class SignupState extends StatefulWidget {
-  const SignupState({super.key});
+class SigninState extends StatefulWidget {
+  const SigninState({super.key});
 
   @override
-  State<SignupState> createState() =>
-      SignupPage();
+  State<SigninState> createState() =>
+      SigninPage();
 }
 
-class SignupPage extends State<SignupState>{
+class SigninPage extends State<SigninState>{
   final TextEditingController _emailTextController = TextEditingController();
   final TextEditingController _passwordTextController = TextEditingController();
-  final TextEditingController _confirmTextController = TextEditingController();
 
   bool obscure = true;
   Icon icon = const Icon(Icons.visibility_outlined);
@@ -39,7 +38,7 @@ class SignupPage extends State<SignupState>{
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Регистрация'),
+        title: const Text('Вход'),
         leading: IconButton(
           onPressed: () {
             context.go("/home"); 
@@ -88,45 +87,18 @@ class SignupPage extends State<SignupState>{
               controller: _passwordTextController,
               validator: FormValidation.requiredTextField,
             ),
-
-            const SizedBox(height: 20),
-
-            MaterialTextField(
-              keyboardType: TextInputType.emailAddress,
-              hint: 'Confirm password',
-              labelText: 'Confirm password',
-              obscureText: conObscure,
-              textInputAction: TextInputAction.next,
-              prefixIcon: const Icon(Icons.lock_outlined),
-              suffixIcon: IconButton(
-                onPressed: () {
-                  setState(() {
-                    if (conObscure == true) {
-                      conObscure = false;
-                      conIcon = const Icon(Icons.visibility_off_outlined);
-                    } else {
-                      conObscure = true;
-                      conIcon = const Icon(Icons.visibility_outlined);
-                    }
-                  });
-                },
-                icon: conIcon
-              ),
-              controller: _confirmTextController,
-              validator: FormValidation.requiredTextField,
-            ),
             
             const SizedBox(height: 40),
 
             SizedBox( 
                 width: MediaQuery.of(context).size.height*0.23,
                 height: MediaQuery.of(context).size.height*0.04,
-                child: FilledButton.tonal(
-                  style: filledButtonStyle,
+                child: OutlinedButton(
+                  style: outlinedButtonStyle,
                   onPressed: () {
                     
                   }, 
-                  child: const Text('Регистрация')
+                  child: Text('Вход', style: textStyle)
                 ),
               ),
           ],

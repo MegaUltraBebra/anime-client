@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-class NotificationsPage extends StatefulWidget {
+class NotificationsState extends StatefulWidget {
+  const NotificationsState({super.key});
   @override
-  _NotificationsPageState createState() => _NotificationsPageState();
+  NotificationsPage createState() => NotificationsPage();
 }
 
-class _NotificationsPageState extends State<NotificationsPage> {
+class NotificationsPage extends State<NotificationsState> {
   List<Notification> _notifications = [];
 
   @override
