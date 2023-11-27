@@ -8,6 +8,7 @@ class AnimesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: CustomAppbar(context: context),
       body: Center(
         child: ElevatedButton(

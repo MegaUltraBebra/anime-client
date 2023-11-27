@@ -12,6 +12,8 @@ class IndexPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
+      extendBodyBehindAppBar: true,
       appBar: CustomAppbar(context: context),
       body: Center(
         child: ElevatedButton(

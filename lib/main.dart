@@ -6,14 +6,14 @@ import 'package:anime_client/pages/index.dart';
 import 'package:anime_client/pages/characters.dart';
 import 'package:anime_client/pages/animes.dart';
 import 'package:anime_client/pages/home.dart';
+import 'package:anime_client/pages/notifications.dart';
+import 'package:anime_client/pages/search.dart';
 
 import 'package:anime_client/widgets/bottomnavigation.dart';
 
 Future<void> main() async {
   usePathUrlStrategy();
-  runApp(
-    Anime(),
-  );
+  runApp(Anime());
 }
 
 class Anime extends StatelessWidget {
@@ -22,6 +22,21 @@ class Anime extends StatelessWidget {
   final GoRouter _router = GoRouter(
     initialLocation: '/',
     routes: <RouteBase>[
+
+      GoRoute(
+        path: '/notifications',
+        builder: (BuildContext context, GoRouterState state) {
+          return NotificationsPage();
+        },
+      ),
+
+      GoRoute(
+        path: '/search',
+        builder: (BuildContext context, GoRouterState state) {
+          return const SearchMenu();
+        },
+      ),
+
       StatefulShellRoute.indexedStack(
         builder: (BuildContext context, GoRouterState state,
             StatefulNavigationShell navigationShell) {
@@ -80,7 +95,21 @@ class Anime extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Anime',
-      theme: ThemeData(useMaterial3: true),
+      theme: ThemeData.dark().copyWith(
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Color.fromARGB(255, 254, 144, 0),
+            actionsIconTheme: IconThemeData(),
+            centerTitle: true,
+            titleTextStyle: TextStyle(
+              color: Colors.white,
+              fontSize: 25
+            )
+          ),
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            selectedItemColor: Color.fromARGB(255, 254, 144, 0),
+            unselectedItemColor: Color.fromARGB(255, 254, 144, 0),
+          ),
+      ),
       routerConfig: _router,
     );
   }
