@@ -67,7 +67,7 @@ class Anime extends StatelessWidget {
             routes: <RouteBase>[
               GoRoute(
                 path: '/animes',
-                builder: (context, state) => const AnimesPage()
+                builder: (context, state) => const AnimesState()
               ),
             ],
           ),

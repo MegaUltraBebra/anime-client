@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget{
                   onPressed: () {
                     context.go('/signin');
                   },
-                  child: Text('Вход', style: textStyle)
+                  child: Text('Вход', style: outlinedTextStyle)
                 ),
               ),
 

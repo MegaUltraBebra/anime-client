@@ -98,7 +98,7 @@ class SigninPage extends State<SigninState>{
                   onPressed: () {
                     
                   }, 
-                  child: Text('Вход', style: textStyle)
+                  child: Text('Вход', style: outlinedTextStyle)
                 ),
               ),
           ],

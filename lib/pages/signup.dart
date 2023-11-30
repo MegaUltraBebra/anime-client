@@ -128,7 +128,7 @@ class SignupPage extends State<SignupState>{
                   }, 
                   child: const Text('Регистрация')
                 ),
-              ),
+            ),
           ],
         ),
       ),
