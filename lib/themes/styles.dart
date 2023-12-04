@@ -13,4 +13,8 @@ ButtonStyle filledButtonStyle = const ButtonStyle(
 );
 
 TextStyle outlinedTextStyle = const TextStyle(color: AppColors.primary);
-TextStyle lableTextStyle = const TextStyle(color: AppColors.textcolor, fontSize: headline2);
+TextStyle lableTextStyle = const TextStyle(color: AppColors.textcolor, fontSize: 25);
+TextStyle titleTextStyle = const TextStyle(color: AppColors.textcolor, fontSize: 25);
+TextStyle subtitleTextStyle = const TextStyle(color: AppColors.textcolor, fontSize: 20);
+TextStyle microsubtitleTextStyle = const TextStyle(color: AppColors.textcolor, fontSize: 14);
+TextStyle uiTextStyle = const TextStyle(color: AppColors.textcolor, fontSize: 20);
