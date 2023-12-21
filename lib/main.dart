@@ -35,7 +35,7 @@ class Anime extends StatelessWidget {
 
       GoRoute(
         path: '/search',
-        builder: (context, state) => const SearchMenu()
+        builder: (context, state) => const SearchPage()
       ),
       GoRoute(
         path: '/signup',
@@ -67,7 +67,7 @@ class Anime extends StatelessWidget {
             routes: <RouteBase>[
               GoRoute(
                 path: '/animes',
-                builder: (context, state) => const AnimesState()
+                builder: (context, state) => const AnimesPage()
               ),
             ],
           ),
@@ -90,7 +90,6 @@ class Anime extends StatelessWidget {
         ],
       ),
     ],
-    
   );
 
   @override
